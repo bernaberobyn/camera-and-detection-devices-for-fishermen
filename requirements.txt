@@ -1,0 +1,7 @@
+libssl-dev
+python-opencv
+requests
+base64
+pandas
+streamlit
+Pillow
