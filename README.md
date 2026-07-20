@@ -45,13 +45,22 @@ Created a 3D printed case to enclose the device with camera exposed. Added a pow
   - SSH into Raspberry pi via terminal using: `ssh <user_name>@<hostname>.local`
   - Get the IP address using: `ifconfig`
   - Use the IP address in RealVNC viewer to access the Raspberry pi
+ 
+### Running the dashboard and display predictions
 - Inside Raspberry pi, create a project folder and move the following files in it:
   - [requirements.txt](https://github.com/bernaberobyn/camera-and-detection-devices-for-fishermen/blob/main/requirements.txt)
   - [start_streamlit.sh](https://github.com/bernaberobyn/camera-and-detection-devices-for-fishermen/blob/main/start_streamlit.sh)
   - [detect_usb_and_send_files_for_prediction.py](https://github.com/bernaberobyn/camera-and-detection-devices-for-fishermen/blob/main/detect_usb_and_send_files_for_prediction.py)
   - [dashboard_using_streamlit](https://github.com/bernaberobyn/camera-and-detection-devices-for-fishermen/blob/main/dashboard_using_streamlit.py)
-- Installing required packages in the Raspberry pi using: `pip install -r requirements.txt`
-- 
+- Install required packages in the Raspberry pi using: `pip install -r requirements.txt`
+- Run the detect_usb_and_send_files_for_prediction.py file and insert the Micro-SD card using a USB adapter. The python script will automatically copy the files to a local folder, pass the images through the model, and save the predictions on a .csv file.
+- To run the dashboard on startup of Raspberry Pi, use the following commands:
+  - `sudo apt-get install xautomation`
+  - `chmod +x ~/start_streamlit.sh`
+  - `sudo crontab -e`
+  - `@reboot sh /home/robynbernabe/start_streamlit.sh >/home/robynbernabe/logs/cronlog 2>&1`
+ 
+
 
 
 
